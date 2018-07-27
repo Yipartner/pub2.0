@@ -14,6 +14,11 @@ class CreateTagsTable extends Migration
     public function up()
     {
         //
+        Schema::create('tags',function (Blueprint $table){
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('color');
+        });
     }
 
     /**
@@ -24,5 +29,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('tags');
     }
 }

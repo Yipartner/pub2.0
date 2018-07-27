@@ -47,6 +47,30 @@ class ArticleService
             ->update($data);
     }
 
+    public function searchByTitle(string $title){
+        $articles = DB::table('articles')
+            ->where('title','like','%'.$title.'%')
+            ->paginate(config('article.page_size'));
+        return $articles;
+    }
+
+    public function searchByType($type_id){
+        $articles =DB::table('articles')
+            ->where('type_id',$type_id)
+            ->paginate();
+        return $articles;
+    }
+
+    public function searchByTag($tag_id){
+        $articles = DB::table('article_tag_relations')
+            ->where('tag_id','=',$tag_id)
+            ->join('articles','article_id','=','articles.id')
+            ->select('articles.*')
+            ->paginate();
+        return $articles;
+    }
+
+    // TODO 根据文章内容搜索
     // TODO 分享
     // TODO 下载
 
