@@ -57,7 +57,7 @@ class ArticleService
     public function searchByType($type_id){
         $articles =DB::table('articles')
             ->where('type_id',$type_id)
-            ->paginate();
+            ->paginate(config('article.page_size'));
         return $articles;
     }
 
@@ -66,7 +66,7 @@ class ArticleService
             ->where('tag_id','=',$tag_id)
             ->join('articles','article_id','=','articles.id')
             ->select('articles.*')
-            ->paginate();
+            ->paginate(config('article.page_size'));
         return $articles;
     }
 

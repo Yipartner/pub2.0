@@ -30,9 +30,15 @@ class TagService
                 ->delete();
         });
     }
-
+    public function getTagByNotSureName($name){
+        $tag = DB::table('tags')
+            ->where('name','like','%'.$name.'%')
+            ->orWhere('name','=',$name)
+            ->get();
+        return $tag;
+    }
     public function showTagList(){
-        $tags=DB::table('tags')->get();
+        $tags=DB::table('tags');
         return $tags;
     }
 }
