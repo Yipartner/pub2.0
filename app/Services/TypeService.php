@@ -35,4 +35,8 @@ class TypeService{
         });
 
     }
+
+    public function showTypes(){
+        return DB::table('types')->orderBy('id')->get();
+    }
 }

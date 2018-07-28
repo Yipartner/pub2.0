@@ -1,5 +1,5 @@
 <?php
 
 return [
-  'page_size' => 7
+  'page_size' => 2
 ];

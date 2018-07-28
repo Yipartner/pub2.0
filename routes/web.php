@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/', 'HomeController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/article', 'HomeController@index');
+Route::get('/article/type/{typeId}','ArticleController@showArticlesByType');
+Route::get('/article/tag/{tagId}','ArticleController@showArticlesByTag');
