@@ -26,21 +26,21 @@ Route::get('/article/tag/{tagId}','ArticleController@showArticlesByTag');
 Route::get('/article/content/{articleId}','ArticleController@showArticleById');
 
 
-Route::get('/article/delete/{articleId}','ArticleController@deleteArticle');
+Route::get('/article/delete/{articleId}','ArticleController@deleteArticle')->middleware('admin');
 
 
-Route::get('/article/edit/{articleId}','ArticleController@editView');
+Route::get('/article/edit/{articleId}','ArticleController@editView')->middleware('admin');
 Route::get('/article/create',function (){
     return view('article.create',[
         'article' => '',
         'do'=>'create'
     ]);
-});
+})->middleware('admin');
 
 
 
-Route::post('/article','ArticleController@createNewArticle');
-Route::post('/article/edit','ArticleController@editArticle');
+Route::post('/article','ArticleController@createNewArticle')->middleware('admin');
+Route::post('/article/edit','ArticleController@editArticle')->middleware('admin');
 
 
 
