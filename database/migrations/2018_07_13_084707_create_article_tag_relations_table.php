@@ -18,6 +18,7 @@ class CreateArticleTagRelationsTable extends Migration
 //            $table->increments('id');
             $table->integer('tag_id');
             $table->string('article_id');
+            $table->unique(['tag_id', 'article_id']);
         });
     }
 

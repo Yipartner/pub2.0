@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
           // 文章分类
           $table->integer('type_id');
           // 封面头图
-          $table->integer('picture_id');
+          $table->integer('picture_id')->default(1);
           // 状态 0:草稿 1:公开发布 2:指定人可见 3:仅自己可见
           $table->integer('status');
           $table->dateTime('created_at');

@@ -26,6 +26,40 @@ class ArticleService
             ]);
     }
 
+    public function showById($article_id,$user_id){
+        $article =DB::table('articles')
+            ->where([
+                ['id','=',$article_id],
+                ['status','=',1]
+            ])
+            ->orWhere([
+                ['id','=',$article_id],
+                ['user_id','=',$user_id]
+            ])
+            ->orWhere(function($query) use ($user_id,$article_id){
+                $query->where('status','=',2)
+                    ->where('id','=',$article_id)
+                    ->whereExists(function ($que) use ($user_id){
+                        $que->select(DB::raw(1))
+                            ->from('article_user_sees')
+                            ->whereRaw('article_user_sees.user_id = '.$user_id.' and article_user_sees.article_id = articles.id');
+                    });
+            })
+            ->first();
+        $tag_articles=DB::table('article_tag_relations')
+            ->where('article_id',$article_id)
+            ->join('tags','tags.id','=','article_tag_relations.tag_id')
+            ->get();
+        $article->tags=[];
+        foreach ($tag_articles as $tag_article){
+            array_push($article->tags,[
+                'tag_id'=>$tag_article->tag_id,
+                'name'=>$tag_article->name,
+                'color'=>$tag_article->color
+            ]);
+        }
+        return $article;
+    }
     /**
      * 删除文章
      * @param $article_id
