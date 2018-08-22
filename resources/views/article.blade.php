@@ -2,17 +2,18 @@
 
 @section('content')
 
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{$article->title}}</h3>
+                        <h3 class="pane l-title">{{$article->title}}</h3>
                     </div>
                     <div class="panel-body" id="article_content">
                         {{--{{$article->content}}--}}
                     </div>
                     <script>
-                        document.getElementById('article_content').innerHTML =
-                            marked('{{$article->content}}');
+                        var preview = document.getElementById('article_content');
+                        var parser = new HyperDown;
+                        preview.innerHTML =
+                            parser.makeHtml("# 1111");
                     </script>
                     <div class="panel-footer">
                         @if($article->tags)

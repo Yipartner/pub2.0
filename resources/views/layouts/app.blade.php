@@ -19,6 +19,7 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/marked/0.4.0/marked.js"></script>
+    <srcipt src="{{url('/')}}/js/Parser.js"></srcipt>
     <script>
         window.Laravel = '{{json_encode([
             'csrfToken' => csrf_token(),

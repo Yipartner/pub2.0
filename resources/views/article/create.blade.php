@@ -13,7 +13,7 @@
                     <script>
                         $("#dropdown").click(function (e) {
                             console.log("阻止下拉栏收回");
-                            e.stopPropagation();
+                            e.stopPropagation();m
 
                         })
                     </script>
@@ -81,6 +81,7 @@
             >{{$article->content ?? ''}}</textarea>
             <script>
                 function contentChange(that) {
+                    console.log(that.value);
                     document.getElementById('pre').innerHTML = marked(that.value)
                 }
             </script>
