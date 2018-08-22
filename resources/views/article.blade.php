@@ -7,14 +7,9 @@
                         <h3 class="pane l-title">{{$article->title}}</h3>
                     </div>
                     <div class="panel-body" id="article_content">
-                        {{--{{$article->content}}--}}
+                        {!! $article->content !!}
                     </div>
-                    <script>
-                        var preview = document.getElementById('article_content');
-                        var parser = new HyperDown;
-                        preview.innerHTML =
-                            parser.makeHtml("# 1111");
-                    </script>
+
                     <div class="panel-footer">
                         @if($article->tags)
                             @foreach($article->tags as $tag)

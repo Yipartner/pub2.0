@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Validator;
+use League\CommonMark\CommonMarkConverter;
 
 class ArticleController extends Controller
 {
@@ -103,6 +104,8 @@ class ArticleController extends Controller
     public function showArticleById($articleId, Request $request)
     {
         $article = $this->articleService->showById($articleId, $request->user()->id ?? -1);
+        $paser = new CommonMarkConverter(['html_input'=>'escape']);
+        $article->content = $paser->convertToHtml($article->content);
         return view('article', [
             'article' => $article
         ]);
