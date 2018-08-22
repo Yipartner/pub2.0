@@ -50,3 +50,10 @@ Route::get('/tags','TagController@getTags');
 Route::get('/dashboard',function (){
     return view('dashboard');
 });
+Route::get('/dashboard/type',function (){
+    return view('admin.type');
+});
+
+
+Route::get('/type/delete/{typeId}','TypeController@deleteType');
+Route::post('type','TypeController@addType');
