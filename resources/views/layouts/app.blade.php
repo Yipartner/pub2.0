@@ -32,94 +32,93 @@
 <body>
 <div id="app" style="background-color: white" class="container">
 
-        <nav class="navbar navbar-default navbar-static-top" style="margin: 0 0 2px 0">
+    <nav class="navbar navbar-default navbar-static-top" style="margin: 0 0 2px 0">
 
-                <div class="navbar-header">
+        <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Laravel') }}
+            <!-- Branding Image -->
+            <a class="navbar-brand" href="{{ url('/home') }}">
+                {{ config('app.name', 'Laravel') }}
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                &nbsp;<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false" aria-haspopup="true">
+                        博文 <span class="caret"></span>
                     </a>
-                </div>
+                    <ul class="dropdown-menu">
+                        @inject('typeService','App\Services\TypeService)
+                        @foreach($typeService->showTypes() as $type)
+                            <li>
+                                <a href={{url('/article/type/'.$type->id)}}>{{$type->name}}</a>
+                            </li>
+                        @endforeach
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false" aria-haspopup="true">
-                                博文 <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @inject('typeService','App\Services\TypeService)
-                                @foreach($typeService->showTypes() as $type)
-                                    <li>
-                                        <a href={{url('/article/type/'.$type->id)}}>{{$type->name}}</a>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </li>
                     </ul>
+                </li>
+            </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">登录</a></li>
-                            <li><a href="{{ url('/register') }}">注册</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">登录</a></li>
+                    <li><a href="{{ url('/register') }}">注册</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            @if(Auth::user()->is_admin)
+                                <li><a href="{{ url('/article/create') }}">写文章</a></li>
+                                <li><a href="{{ url('/dashboard') }}">管理</a></li>
+                            @endif
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    登出
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    @if(Auth::user()->is_admin)
-                                        <li><a href="{{ url('/article/create') }}">写文章</a></li>
-                                        <li><a href="{{ url('/dashboard') }}">管理</a></li>
-                                    @endif
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            登出
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                              style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-
-                                </ul>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
-                        @endif
-                    </ul>
-                </div>
 
-        </nav>
-        @yield('content')
-        <div class="footer">
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+        </div>
+
+    </nav>
+    @yield('content')
+    <div class="footer">
+        <div>
             <span id="busuanzi_container_site_pv">
     本站总访问量<span id="busuanzi_value_site_pv"></span>次
 </span>
-</span>
-</span>
         </div>
-</div>
+    </div>
 
-<!-- Scripts -->
+    <!-- Scripts -->
 
 </body>
 </html>
