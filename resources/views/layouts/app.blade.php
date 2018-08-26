@@ -20,6 +20,8 @@
             crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/marked/0.4.0/marked.js"></script>
     <srcipt src="{{url('/')}}/js/Parser.js"></srcipt>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
     <script>
         window.Laravel = '{{json_encode([
             'csrfToken' => csrf_token(),
@@ -108,6 +110,13 @@
 
         </nav>
         @yield('content')
+        <div class="footer">
+            <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</span>
+</span>
+        </div>
 </div>
 
 <!-- Scripts -->
