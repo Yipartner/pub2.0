@@ -2,48 +2,49 @@
 
 @section('content')
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="pane l-title">{{$article->title}}</h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="pane l-title">{{$article->title}}</h3>
+            <div class="right">
                         <span id="busuanzi_container_site_uv">
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-</span>
-                    </div>
-                    <div class="panel-body" id="article_content">
-                        {!! $article->content !!}
-                    </div>
+  文章访客数<span id="busuanzi_value_site_uv"></span>次</div>
+            </span>
+        </div>
+        <div class="panel-body" id="article_content">
+            {!! $article->content !!}
+        </div>
 
-                    <div class="panel-footer">
-                        @if($article->tags)
-                            @foreach($article->tags as $tag)
-                                <button class="btn-sm" style="background-color: {{$tag['color']}}"
-                                        onclick="window.location.href='{{url('/article/tag/'.$tag['tag_id'])}}'">
-                                    <span style="font-weight:500;color: white">{{$tag['name']}}</span>
-                                </button>
-                            @endforeach
-                        @else
-                            <button class="btn" disabled="true">暂无标签</button>
-                        @endif
-                    </div>
-                </div>
-                <div class="panel panel-default" style="text-align: right">
-                    <div class="panel-heading">
-                        <form action="{{}}" method="post">
+        <div class="panel-footer">
+            @if($article->tags)
+                @foreach($article->tags as $tag)
+                    <button class="btn-sm" style="background-color: {{$tag['color']}}"
+                            onclick="window.location.href='{{url('/article/tag/'.$tag['tag_id'])}}'">
+                        <span style="font-weight:500;color: white">{{$tag['name']}}</span>
+                    </button>
+                @endforeach
+            @else
+                <button class="btn" disabled="true">暂无标签</button>
+            @endif
+        </div>
+    </div>
+    <div class="panel panel-default" style="text-align: right">
+        <div class="panel-heading">
+            <form action="{{}}" method="post">
                             <textarea class="form-control" rows="3"
                                       @if(Auth::guest())
                                       placeholder="请登录后评论" disabled
                                       @else
                                       placeholder="开始你的表演"
-                                      @endif
+                                    @endif
                             ></textarea>
-                            <button type="submit" class="btn btn-primary" @if(Auth::guest()) disabled @endif>
-                                发表评论
-                            </button>
-                        </form>
-                    </div>
-                    <div class="panel-body">
+                <button type="submit" class="btn btn-primary" @if(Auth::guest()) disabled @endif>
+                    发表评论
+                </button>
+            </form>
+        </div>
+        <div class="panel-body">
 
-                    </div>
-                </div>
+        </div>
+    </div>
 
 @endsection
