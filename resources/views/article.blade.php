@@ -6,9 +6,9 @@
         <div class="panel-heading">
             <h3 class="pane l-title">{{$article->title}}</h3>
             <div class="right">
-                        <span id="busuanzi_container_site_uv">
-  文章访客数<span id="busuanzi_value_site_uv"></span>次</div>
-            </span>
+                        <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
         </div>
         <div class="panel-body" id="article_content">
             {!! $article->content !!}
