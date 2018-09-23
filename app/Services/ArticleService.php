@@ -108,6 +108,7 @@ class ArticleService
                    ->whereRaw('article_user_sees.user_id = '.$user_id.' and article_user_sees.article_id = articles.id');
                 });
             })
+            ->orderBy('articles.created_at','desc')
             ->paginate(config('article.page_size'));
         return $this->addTagInfo($articles);
     }
@@ -157,6 +158,7 @@ class ArticleService
             })
             ->join('articles','article_id','=','articles.id')
             ->select('articles.*')
+            ->orderBy('articles.created_at','desc')
             ->paginate(config('article.page_size'));
         return $this->addTagInfo($articles);
     }
