@@ -18,7 +18,7 @@
     <script src="{{url('/')}}/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/marked/0.4.0/marked.js"></script>
     <srcipt src="{{url('/')}}/js/Parser.js"></srcipt>
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <script>
         window.Laravel = '{{json_encode([
