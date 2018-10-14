@@ -5,7 +5,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="pane l-title">{{$article->title}}</h3>
-            <div class="right" disabled>
+            <div class="right" style="display: none">
                         <span id="busuanzi_container_page_pv">
   本文总阅读量<span id="busuanzi_value_page_pv"></span>次
 </span>

@@ -114,7 +114,7 @@
     </nav>
     @yield('content')
     <div class="footer">
-        <div disabled>
+        <div style="display:none">
             <span id="busuanzi_container_site_pv">
     本站总访问量<span id="busuanzi_value_site_pv"></span>次
 </span>
