@@ -4,7 +4,7 @@
 
     <div class="jumbotron "
          style="
-    background-image: url(http://of1deuret.bkt.clouddn.com/17-11-21/69568559.jpg);
+    background-image: url(http://picture.sealbaby.cn/fasi.jpeg);
     background-repeat: no-repeat;
     background-position: center 0;
     -webkit-background-size: cover;

@@ -46,7 +46,7 @@
                 {{$articles->links('vendor.pagination.bootstrap-4')}}
             @else
                 <div style="text-align: center; margin-top: 30px">
-                    <img src="http://p39smi668.bkt.clouddn.com/404%E5%BD%A9.png" width="50%" alt="">
+                    <img src="http://picture.sealbaby.cn/404%E5%BD%A9.png" width="50%" alt="">
                     <h3>小伙伴还没有该分类的文章</h3>
                     <h3>你可以去看看其他类别下的文章~~</h3>
                 </div>
