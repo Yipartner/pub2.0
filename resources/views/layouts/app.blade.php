@@ -67,6 +67,11 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="http://she.sealbaby.cn">
+                        她
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -109,7 +114,7 @@
     </nav>
     @yield('content')
     <div class="footer">
-        <div>
+        <div style="display:none">
             <span id="busuanzi_container_site_pv">
     本站总访问量<span id="busuanzi_value_site_pv"></span>次
 </span>
