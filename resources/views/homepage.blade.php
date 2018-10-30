@@ -17,6 +17,6 @@
     /*position: relative*/
 ">
         <h1 style="cursor: pointer;color: #2a88bd"><a href={{url('/')}}>MariaSeal's Pub</a></h1>
-        <h1 style="color: white"><span>小伙伴</span></h1>
+        <h1 style="color: #2a88bd"><span>小伙伴</span></h1>
     </div>
 @endsection
